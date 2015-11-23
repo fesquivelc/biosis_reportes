@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2015-11-20T18:24:15 -->
+<!-- 2015-11-23T15:26:45 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="registro_asistencia" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bfb4885b-e2e3-4138-82de-014ad849633f">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<import value="net.sf.jasperreports.functions.standard.LogicalFunctions"/>
@@ -33,6 +33,32 @@
 			<bottomPen lineWidth="0.5" lineColor="#000000"/>
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
+	</style>
+	<style name="style_asistencia">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{tipo} == 2]]></conditionExpression>
+			<style mode="Opaque" backcolor="#ACB1F0"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{tipo} == 1 || $F{tipo} == 11]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FF6A6A"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{tipo} == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#9CF699"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{tipo} == -1]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FBFFE5"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{tipo} == -2]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FF5555"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{tipo} == -3]]></conditionExpression>
+			<style mode="Opaque" backcolor="#BBBBBB"/>
+		</conditionalStyle>
 	</style>
 	<parameter name="usuario" class="java.lang.String">
 		<parameterDescription><![CDATA[]]></parameterDescription>
@@ -435,7 +461,7 @@
 						<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="7" isBold="false"/>
+						<font size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{conteoAusencia}]]></textFieldExpression>
 				</textField>
@@ -451,7 +477,7 @@
 						<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="7" isBold="false"/>
+						<font size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{totalMarcacionesPendientes}]]></textFieldExpression>
 				</textField>
@@ -467,7 +493,7 @@
 						<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="7" isBold="false"/>
+						<font size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[String.format("%.2f",$V{totalTardanzaMes})]]></textFieldExpression>
 				</textField>
@@ -483,7 +509,7 @@
 						<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="7" isBold="false"/>
+						<font size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[String.format("%.2f",$V{totalHorasExtrasMes})]]></textFieldExpression>
 				</textField>
@@ -704,12 +730,12 @@
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{referencias}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EE dd">
-				<reportElement x="0" y="0" width="30" height="11" forecolor="#1D1D1D" uuid="879892ee-aaa3-478c-afcd-8ac07d883c04">
+				<reportElement style="style_asistencia" x="0" y="0" width="30" height="11" forecolor="#1D1D1D" uuid="879892ee-aaa3-478c-afcd-8ac07d883c04">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
@@ -720,7 +746,7 @@
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
@@ -736,11 +762,11 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo} <= 0 ? 
 $F{enPermiso1} == true ?
-"PERMISO" : $F{horaEvento1} == null ?
+"PERM." : $F{horaEvento1} == null ?
 "FALTA" : DATEFORMAT($F{horaEvento1},"HH:mm:ss") : null]]></textFieldExpression>
 			</textField>
 			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
@@ -755,11 +781,11 @@ $F{enPermiso1} == true ?
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo} <= 0 ? 
 $F{enPermiso2} == true ?
-"PERMISO" : $F{horaEvento2} == null ?
+"PERM." : $F{horaEvento2} == null ?
 "FALTA" : DATEFORMAT($F{horaEvento2},"HH:mm:ss") : null]]></textFieldExpression>
 			</textField>
 			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
@@ -774,12 +800,12 @@ $F{enPermiso2} == true ?
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{marcacionesTotales} > 2 ?
 $F{tipo} <= 0 ? 
 $F{enPermiso3} == true ?
-"PERMISO" : $F{horaEvento3} == null ?
+"PERM." : $F{horaEvento3} == null ?
 "FALTA" : DATEFORMAT($F{horaEvento3},"HH:mm:ss") : null : null]]></textFieldExpression>
 			</textField>
 			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
@@ -794,12 +820,12 @@ $F{enPermiso3} == true ?
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{marcacionesTotales} > 2 ?
 $F{tipo} <= 0 ? 
 $F{enPermiso4} == true ?
-"PERMISO" : $F{horaEvento4} == null ?
+"PERM." : $F{horaEvento4} == null ?
 "FALTA" : DATEFORMAT($F{horaEvento4},"HH:mm:ss") : null : null]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="true">
@@ -814,7 +840,7 @@ $F{enPermiso4} == true ?
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[String.format("%.2f",$F{minutosTardanza})]]></textFieldExpression>
 			</textField>
@@ -830,7 +856,7 @@ $F{enPermiso4} == true ?
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{horaEvento1}== null && !$F{enPermiso1}) && ($F{horaEvento2}== null && !$F{enPermiso2}) && ($F{horaEvento3}== null && !$F{enPermiso3}) && ($F{horaEvento4}== null && !$F{enPermiso4}) ?
 0 : 
@@ -851,7 +877,7 @@ $F{enPermiso4} == true ?
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo} == -2 ? "X" : ""]]></textFieldExpression>
 			</textField>
@@ -867,7 +893,7 @@ $F{enPermiso4} == true ?
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[String.format("%.2f",($F{minutosExtra}/60))]]></textFieldExpression>
 			</textField>
@@ -883,7 +909,7 @@ $F{enPermiso4} == true ?
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="rgba(29, 29, 29, 0.33333334)"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{permisos}.trim()]]></textFieldExpression>
 			</textField>
