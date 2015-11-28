@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2015-11-26T15:46:59 -->
+<!-- 2015-11-27T18:20:57 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="registro_asistencia" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bfb4885b-e2e3-4138-82de-014ad849633f">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<import value="net.sf.jasperreports.functions.standard.LogicalFunctions"/>
 	<import value="net.sf.jasperreports.functions.standard.TextFunctions"/>
-	<import value="net.sf.jasperreports.functions.standard.MathFunctions"/>
 	<import value="net.sf.jasperreports.functions.standard.DateTimeFunctions"/>
+	<import value="net.sf.jasperreports.functions.standard.MathFunctions"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -36,28 +36,32 @@
 	</style>
 	<style name="style_asistencia">
 		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{tipo} == 3]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FF9457"/>
+		</conditionalStyle>
+		<conditionalStyle>
 			<conditionExpression><![CDATA[$F{tipo} == 2]]></conditionExpression>
 			<style mode="Opaque" backcolor="#ACB1F0"/>
 		</conditionalStyle>
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$F{tipo} == 1 || $F{tipo} == 11]]></conditionExpression>
-			<style mode="Opaque" backcolor="#FF6A6A"/>
+			<style mode="Opaque" backcolor="#FF9457"/>
 		</conditionalStyle>
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$F{tipo} == 0]]></conditionExpression>
-			<style mode="Opaque" backcolor="#9CF699"/>
+			<style mode="Opaque" backcolor="#96FF9C"/>
 		</conditionalStyle>
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$F{tipo} == -1]]></conditionExpression>
-			<style mode="Opaque" backcolor="#FBFFE5"/>
+			<style mode="Opaque" backcolor="#EEFF70"/>
 		</conditionalStyle>
 		<conditionalStyle>
-			<conditionExpression><![CDATA[$F{tipo} == -2]]></conditionExpression>
-			<style mode="Opaque" backcolor="#FF5555"/>
+			<conditionExpression><![CDATA[$F{tipo} == -2 || ($F{tipo} == -3 && $P{ver_inconsistencias_como_falta})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C44531"/>
 		</conditionalStyle>
 		<conditionalStyle>
-			<conditionExpression><![CDATA[$F{tipo} == -3]]></conditionExpression>
-			<style mode="Opaque" backcolor="#BBBBBB"/>
+			<conditionExpression><![CDATA[$F{tipo} == -3 && !$P{ver_inconsistencias_como_falta}]]></conditionExpression>
+			<style mode="Opaque" backcolor="#8E9994"/>
 		</conditionalStyle>
 	</style>
 	<parameter name="usuario" class="java.lang.String">
@@ -79,6 +83,9 @@
 	<parameter name="fecha_fin" class="java.util.Date"/>
 	<parameter name="ver_horas_extra" class="java.lang.Boolean">
 		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ver_inconsistencias_como_falta" class="java.lang.Boolean">
 		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
 	</parameter>
 	<queryString>
